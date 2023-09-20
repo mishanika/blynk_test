@@ -1,38 +1,50 @@
-.App {
-  text-align: center;
-}
+.wrapper {
+  height: 100%;
+  display: flex;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  gap: 50px;
+  padding: 0 50px;
+  color: #353535;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.comp-wrapper {
+  flex-grow: 1;
+  padding: 50px 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.dairy {
+  padding: 15px 0;
+  width: 15%;
+  background: #2b2f3e;
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 15px;
+}
+.dairy span {
+  text-align: center;
+}
+.dairy span:first-child {
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+.dairy span:last-child {
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255, 0.4);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 1500px) {
+  .wrapper > div:last-child {
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+  .wrapper > div:last-child > div {
+    width: 100%;
   }
 }

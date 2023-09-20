@@ -1,0 +1,53 @@
+.comments {
+  width: 45%;
+  height: fit-content;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.colorInput {
+  background: #fff;
+  padding: 5px 10px;
+  width: 80px;
+  height: 60px;
+}
+
+.add-comment-btn {
+  padding: 10px 15px;
+  color: #fff;
+  font-size: 1.5rem;
+  background: #007bff;
+  border-radius: 0.5rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all ease 0.3s;
+  border: 1px solid transparent;
+}
+.add-comment-btn:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+.color-block {
+  width: 75px;
+  height: 75px;
+}
+.comments-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.comment {
+  display: flex;
+  gap: 25px;
+  border-radius: 0.5rem;
+
+  border: 1px solid #ced4da;
+  cursor: pointer;
+}
+.text {
+  padding: 12px 0;
+}
