@@ -3,6 +3,7 @@ import "./Items.css";
 
 const Items = ({ items, setItems, activeItem, setActiveItem, setIsRender }) => {
   const inputRef = useRef(null);
+  const itemsRef = useRef(null);
 
   const addItem = (e) => {
     e.preventDefault();
@@ -16,19 +17,27 @@ const Items = ({ items, setItems, activeItem, setActiveItem, setIsRender }) => {
   };
 
   const deleteItem = (id) => {
+    setActiveItem(items.length - 2);
     setIsRender(true);
-
     setItems((prev) => prev.filter((item, innerId) => innerId !== id));
   };
 
-  const activate = (id) => {
-    document.querySelector(`.items-wrapper>div:nth-child(${activeItem + 1})`)?.classList.remove("active");
+  const activate = (id, e) => {
+    Array.from(itemsRef.current.children).forEach((item) => item.classList.remove("active"));
     document.querySelector(`.items-wrapper>div:nth-child(${id + 1})`)?.classList.add("active");
+    if (e.target.classList.contains("delete-btn")) {
+      return;
+    }
     setActiveItem(id);
   };
 
+  useEffect(() => {
+    Array.from(itemsRef.current.children).forEach((item) => item.classList.remove("active"));
+    document.querySelector(`.items-wrapper>div:nth-child(${activeItem + 1})`)?.classList.add("active");
+  }, [activeItem]);
+
   const itemsRender = ({ name, comments }, id) => (
-    <div className="item" key={id} onClick={() => activate(id)}>
+    <div className="item" key={id} onClick={(e) => activate(id, e)}>
       <span className="item-name">{name}</span>
       <div className="quantity-btn-wrapper">
         <span className="item-commentQuantity">{comments.length}</span>
@@ -47,7 +56,9 @@ const Items = ({ items, setItems, activeItem, setActiveItem, setIsRender }) => {
         <input type="submit" className="add-btn" value="Add New" onClick={(e) => addItem(e)} />
       </form>
 
-      <div className="items-wrapper">{items.map(itemsRender)}</div>
+      <div className="items-wrapper" ref={itemsRef}>
+        {items.map(itemsRender)}
+      </div>
     </div>
   );
 };

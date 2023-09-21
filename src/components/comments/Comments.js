@@ -29,9 +29,11 @@ const Comments = ({ items, activeItem, setItems, setIsRender }) => {
 
   return (
     <div className="comments">
-      <span className="title">Comments #{items.length === 0 ? false : items[activeItem].commentsNumber}</span>
+      <span className="title">
+        Comments #{items.length === 0 || !items[activeItem] ? false : items[activeItem].commentsNumber}
+      </span>
       <div className="comments-wrapper">
-        {items.length === 0 ? false : items[activeItem].comments.map(commentsRender)}
+        {items.length === 0 || !items[activeItem] ? false : items[activeItem].comments.map(commentsRender)}
       </div>
       <form className="input-wrapper">
         <input type="color" name="color" id="color" className="colorInput" ref={inputColorRef} />
